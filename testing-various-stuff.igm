@@ -17,12 +17,12 @@ Settings
 
 Includes
     // BUILDING INCLUDES
-    *include personMain %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+    *include personMain %id %name %desc %flavor %priceMain %condMain %effMain %effBonus %tag
         *person[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
-            req:[%condMain] tokens or (this<1)
+            req:[%condMain] tokens and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -31,12 +31,12 @@ Includes
             on lose:lose 1 personHire
             tags:person [%tag]
 
-    *include personBonus %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+    *include personBonus %id %name %desc %flavor %priceBonus %condBonus %effMain %effBonus %tag
         *person[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
-            req:[%condBonus] gems or (this<1)
+            req:[%condBonus] gems and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -50,7 +50,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems or (this<1)
+            req:[%condMain] tokens, [%condBonus] gems and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -59,12 +59,12 @@ Includes
             on lose:lose 1 personHire
             tags:person [%tag]
 
-    *include buildingMain %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+    *include buildingMain %id %name %desc %flavor %priceMain %condMain %effMain %effBonus %tag
         *building[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
-            req:[%condMain] tokens or (this<1)
+            req:[%condMain] tokens and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -73,12 +73,12 @@ Includes
             on lose:lose 1 buildBuilt
             tags:building [%tag]
 
-    *include buildingBonus %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+    *include buildingBonus %id %name %desc %flavor %priceBonus %condBonus %effMain %effBonus %tag
         *building[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
-            req:[%condBonus] gems or (this<1)
+            req:[%condBonus] gems and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -92,7 +92,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems or (this<1)
+            req:[%condMain] tokens, [%condBonus] gems and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -150,7 +150,7 @@ Resources
         text:[(this)] Built [?(this=1)|Building|Buildings]
 
 Buildings
-    [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %priceBonus="0" %condMain="5" %condBonus="0" %effMain="1" %effBonus="0.000000001" %tag="melee"]
+    [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %condMain="5" %effMain="1" %effBonus="0.000000001" %tag="melee"]
 
 Upgrades
 
