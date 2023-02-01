@@ -22,7 +22,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
-            req:[%condMain] tokens and (this<1)
+            req:[%condMain] tokens or (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -36,7 +36,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
-            req:[%condBonus] gems and (this<1)
+            req:[%condBonus] gems or (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -50,7 +50,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems and (this<1)
+            req:[%condMain] tokens, [%condBonus] gems or (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -59,12 +59,40 @@ Includes
             on lose:lose 1 personHire
             tags:person [%tag]
 
+    *include buildingMain %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+        *building[%id]
+            name:[%name]
+            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            cost:[%priceMain] tokens
+            req:[%condMain] tokens or (this<1)
+            on tick:
+                yield [%effMain] tokens
+                yield [%effBonus] gems
+            end
+            on earn:yield 1 buildBuilt
+            on lose:lose 1 buildBuilt
+            tags:building [%tag]
+
+    *include buildingBonus %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+        *building[%id]
+            name:[%name]
+            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            cost:[%priceBonus] gems
+            req:[%condBonus] gems or (this<1)
+            on tick:
+                yield [%effMain] tokens
+                yield [%effBonus] gems
+            end
+            on earn:yield 1 buildBuilt
+            on lose:lose 1 buildBuilt
+            tags:building [%tag]
+
     *include buildingBoth %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
         *building[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems and (this<1)
+            req:[%condMain] tokens, [%condBonus] gems or (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
