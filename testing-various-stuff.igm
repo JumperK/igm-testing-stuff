@@ -119,7 +119,7 @@ Resources
 
     // BUILT BUILDINGS
     *buildBuilt
-        text:[(this)] Built Building[(s?this)]
+        text:[(this)] Built [?(this=1)|Building|Buildings]
 
 Buildings
     [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %priceBonus="0" %condMain="5" %condBonus="0" %effMain="1" %effBonus="0.000000001" %tag="melee"]
