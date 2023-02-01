@@ -21,8 +21,8 @@ Includes
         *person[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
-            cost:[%priceMain] coins, [%priceBonus] gems
-            req:[%condMain] coins, [%condBonus] gems
+            cost:[%priceMain] tokens, [%priceBonus] gems
+            req:[%condMain] tokens, [%condBonus] gems
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -35,8 +35,8 @@ Includes
         *building[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
-            cost:[%priceMain] coins, [%priceBonus] gems
-            req:[%condMain] coins, [%condBonus] gems
+            cost:[%priceMain] tokens, [%priceBonus] gems
+            req:[%condMain] tokens, [%condBonus] gems
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
