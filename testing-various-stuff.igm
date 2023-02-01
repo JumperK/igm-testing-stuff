@@ -1,0 +1,106 @@
+Let's make a game!
+    name:Testing Various Stuff v0.000α
+    author:JumperTD
+    desc:Let's cut the bullshit,<//>this is to test various different stuff for use in other IGM games,<//>including shit like Rebirths and Tab-Switching.<//></>Let me know if it works, as I want to use this in other projects ASAP.<//></></>Version: 0.000α</>FIRST CREATED: Jan. 30th, 2023</>LAST UPDATED: Feb. 1st, 2023
+    created:30/01/2023
+    updated:01/02/2023
+
+Settings
+    //background:url.jpg
+    //tiling background:url.jpg
+    building cost increase:120%
+    building cost refund:40%
+    //spritesheet:Name, X by Y, url.jpg
+    //stylesheet:url
+    no particles
+    no bulk particles
+
+Includes
+    // BUILDING INCLUDES
+    *include personAdd %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+        *person[%id]
+            name:[%name]
+            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            costs:[%priceMain] coins, [%priceBonus] gems
+            req:[%condMain] coins, [%condBonus] gems
+            on tick:
+                yield [%effMain] tokens
+                yield [%effBonus] gems
+            end
+            on earn:yield 1 personHire
+            on lose:lose 1 personHire
+            tags:person [%tag]
+
+    *include buildingAdd %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+        *building[%id]
+            name:[%name]
+            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            costs:[%priceMain] coins, [%priceBonus] gems
+            req:[%condMain] coins, [%condBonus] gems
+            on tick:
+                yield [%effMain] tokens
+                yield [%effBonus] gems
+            end
+            on earn:yield 1 buildBuilt
+            on lose:lose 1 buildBuilt
+            tags:building [%tag]
+
+//Layout
+
+
+Buttons
+    *buttonMain
+        name:Red Button
+        desc:A non-suspicious shiny button with a red hue.<//></><b>CURRENT STATS:</b></><.>(this:clicks) Total Clicks</><.>+(bMainCurr) per Click</><.>+(bMainPerc)% from Upgrades
+        on click:
+            yield 1 tokens
+            yield 1 tokensOA
+            yield 1 tokensAT
+        end
+        class:bigButton hasFlares
+
+Resources
+    // BUTTON STATISTICS
+    *bMainCurr
+        start with:1
+        hidden
+
+    *bMainPerc
+        start with:100
+        hidden
+
+    // MAIN RESOURCES
+    *token|tokens
+        name:Token|Tokens
+        text:Token[s?this]: [this]
+
+    *tokensOA
+        text:Tokens (This Ascension): [this]
+
+    *tokensAT
+        text:Tokens (All Time): [this]
+
+    // BONUS RESOURCES
+    *gem|gems
+        name:Gem|Gems
+        text:Gem[s?this]: [this]
+
+    // HIRED PEOPLE
+    *personHire
+        text:(this) Hired [?(this=1)|Person|People]
+
+    // BUILT BUILDINGS
+    *buildBuilt
+        text:(this) Built Building(s?this)
+
+Buildings
+    [include personAdd %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %priceBonus="0" %condMain="5" %condBonus="0" %effMain="1" %effBonus="0.000000001" %tag="melee"]
+
+Upgrades
+
+
+Achievements
+
+
+//CSS
+
