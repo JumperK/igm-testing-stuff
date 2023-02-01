@@ -22,7 +22,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
-            req:[%condMain] tokens and (this>0)
+            req:[%condMain] tokens:earned
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -36,7 +36,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
-            req:[%condBonus] gems and (this>0)
+            req:[%condBonus] gems:earned
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -50,7 +50,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems and (this>0)
+            req:[%condMain] tokens:earned, [%condBonus] gems:earned
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -64,7 +64,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
-            req:[%condMain] tokens and (this>0)
+            req:[%condMain] tokens:earned
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -78,7 +78,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
-            req:[%condBonus] gems and (this>0)
+            req:[%condBonus] gems:earned
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -92,7 +92,7 @@ Includes
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems and (this>0)
+            req:[%condMain] tokens:earned, [%condBonus] gems:earned
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
