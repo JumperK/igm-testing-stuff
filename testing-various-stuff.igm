@@ -17,12 +17,12 @@ Settings
 
 Includes
     // BUILDING INCLUDES
-    *include personAdd %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+    *include personMain %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
         *person[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
-            cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems
+            cost:[%priceMain] tokens
+            req:[%condMain] tokens and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -31,12 +31,40 @@ Includes
             on lose:lose 1 personHire
             tags:person [%tag]
 
-    *include buildingAdd %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+    *include personBonus %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+        *person[%id]
+            name:[%name]
+            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            cost:[%priceBonus] gems
+            req:[%condBonus] gems and (this<1)
+            on tick:
+                yield [%effMain] tokens
+                yield [%effBonus] gems
+            end
+            on earn:yield 1 personHire
+            on lose:lose 1 personHire
+            tags:person [%tag]
+
+    *include personBoth %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
+        *person[%id]
+            name:[%name]
+            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            cost:[%priceMain] tokens, [%priceBonus] gems
+            req:[%condMain] tokens, [%condBonus] gems and (this<1)
+            on tick:
+                yield [%effMain] tokens
+                yield [%effBonus] gems
+            end
+            on earn:yield 1 personHire
+            on lose:lose 1 personHire
+            tags:person [%tag]
+
+    *include buildingBoth %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
         *building[%id]
             name:[%name]
             desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
-            req:[%condMain] tokens, [%condBonus] gems
+            req:[%condMain] tokens, [%condBonus] gems and (this<1)
             on tick:
                 yield [%effMain] tokens
                 yield [%effBonus] gems
@@ -51,7 +79,7 @@ Includes
 Buttons
     *buttonMain
         name:Red Button
-        desc:A non-suspicious shiny button with a red hue.<//></><b>CURRENT STATS:</b></><.>(this:clicks) Total Clicks</><.>+(bMainCurr) per Click</><.>+(bMainPerc)% from Upgrades
+        desc:A non-suspicious shiny button with a red hue.<//></><b>CURRENT STATS:</b></><.>[(this:clicks)] Total Clicks</><.>+[(bMainCurr)] per Click</><.>+[(bMainPerc)]% from Upgrades
         on click:
             yield 1 tokens
             yield 1 tokensOA
@@ -87,14 +115,14 @@ Resources
 
     // HIRED PEOPLE
     *personHire
-        text:(this) Hired [?(this=1)|Person|People]
+        text:[(this)] Hired [?(this=1)|Person|People]
 
     // BUILT BUILDINGS
     *buildBuilt
-        text:(this) Built Building(s?this)
+        text:[(this)] Built Building[(s?this)]
 
 Buildings
-    [include personAdd %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %priceBonus="0" %condMain="5" %condBonus="0" %effMain="1" %effBonus="0.000000001" %tag="melee"]
+    [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %priceBonus="0" %condMain="5" %condBonus="0" %effMain="1" %effBonus="0.000000001" %tag="melee"]
 
 Upgrades
 
