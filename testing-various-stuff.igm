@@ -79,7 +79,7 @@ Includes
 Buttons
     *buttonMain
         name:Red Button
-        desc:A non-suspicious shiny button with a red hue.<//></><b>CURRENT STATS:</b></><.>[(this:clicks)] Total Clicks</><.>+[(bMainCurr)] per Click</><.>+[(bMainPerc)]% from Upgrades
+        desc:A non-suspicious shiny button with a red hue.<//></><b>CURRENT STATS:</b></><.>[(buttonMain:clicks)] Total Clicks</><.>+[(bMainCurr)] per Click</><.>+[(bMainPerc)]% from Upgrades
         on click:
             yield 1 tokens
             yield 1 tokensOA
