@@ -24,8 +24,8 @@ Includes
             cost:[%priceMain] tokens
             req:[%condMain] tokens:earned
             on tick:
-                yield [%effMain] tokens
-                yield [%effBonus] gems
+                yield [%effMain] tag:mainRes
+                yield [%effBonus] tag:bonusRes
             end
             on earn:yield 1 personHire
             on lose:lose 1 personHire
@@ -38,8 +38,8 @@ Includes
             cost:[%priceBonus] gems
             req:[%condBonus] gems:earned
             on tick:
-                yield [%effMain] tokens
-                yield [%effBonus] gems
+                yield [%effMain] tag:mainRes
+                yield [%effBonus] tag:bonusRes
             end
             on earn:yield 1 personHire
             on lose:lose 1 personHire
@@ -52,8 +52,8 @@ Includes
             cost:[%priceMain] tokens, [%priceBonus] gems
             req:[%condMain] tokens:earned, [%condBonus] gems:earned
             on tick:
-                yield [%effMain] tokens
-                yield [%effBonus] gems
+                yield [%effMain] tag:mainRes
+                yield [%effBonus] tag:bonusRes
             end
             on earn:yield 1 personHire
             on lose:lose 1 personHire
@@ -66,8 +66,8 @@ Includes
             cost:[%priceMain] tokens
             req:[%condMain] tokens:earned
             on tick:
-                yield [%effMain] tokens
-                yield [%effBonus] gems
+                yield [%effMain] tag:mainRes
+                yield [%effBonus] tag:bonusRes
             end
             on earn:yield 1 buildBuilt
             on lose:lose 1 buildBuilt
@@ -80,8 +80,8 @@ Includes
             cost:[%priceBonus] gems
             req:[%condBonus] gems:earned
             on tick:
-                yield [%effMain] tokens
-                yield [%effBonus] gems
+                yield [%effMain] tag:mainRes
+                yield [%effBonus] tag:bonusRes
             end
             on earn:yield 1 buildBuilt
             on lose:lose 1 buildBuilt
@@ -94,8 +94,8 @@ Includes
             cost:[%priceMain] tokens, [%priceBonus] gems
             req:[%condMain] tokens:earned, [%condBonus] gems:earned
             on tick:
-                yield [%effMain] tokens
-                yield [%effBonus] gems
+                yield [%effMain] tag:mainRes
+                yield [%effBonus] tag:bonusRes
             end
             on earn:yield 1 buildBuilt
             on lose:lose 1 buildBuilt
@@ -129,25 +129,31 @@ Resources
     *token|tokens
         name:Token|Tokens
         text:Token[s?this]: [this]
+        tag:mainRes reset
 
     *tokensOA
         text:Tokens (This Ascension): [this]
+        tags:mainRes oneAscend reset
 
     *tokensAT
         text:Tokens (All Time): [this]
+        tags:mainRes allTime
 
     // BONUS RESOURCES
     *gem|gems
         name:Gem|Gems
         text:Gem[s?this]: [this]
+        tags:bonusRes reset
 
     // HIRED PEOPLE
     *personHire
         text:[(this)] Hired [?(this=1)|Person|People]
+        tags:stats reset
 
     // BUILT BUILDINGS
     *buildBuilt
         text:[(this)] Built [?(this=1)|Building|Buildings]
+        tags:stats reset
 
 Buildings
     [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %condMain="5" %effMain="1" %effBonus="0.000000001" %tag="melee"]
