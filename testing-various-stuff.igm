@@ -20,7 +20,7 @@ Includes
     *include personMain %id %name %desc %flavor %priceMain %condMain %effMain %effBonus %tag
         *person[%id]
             name:[%name]
-            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            desc:[%desc]<//></></>+[%effMain] TpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
             req:[%condMain] tokens:earned
             on tick:
@@ -32,7 +32,7 @@ Includes
     *include personBonus %id %name %desc %flavor %priceBonus %condBonus %effMain %effBonus %tag
         *person[%id]
             name:[%name]
-            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            desc:[%desc]<//></></>+[%effMain] TpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
             req:[%condBonus] gems:earned
             on tick:
@@ -44,7 +44,7 @@ Includes
     *include personBoth %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
         *person[%id]
             name:[%name]
-            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            desc:[%desc]<//></></>+[%effMain] TpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
             req:[%condMain] tokens:earned, [%condBonus] gems:earned
             on tick:
@@ -56,7 +56,7 @@ Includes
     *include buildingMain %id %name %desc %flavor %priceMain %condMain %effMain %effBonus %tag
         *building[%id]
             name:[%name]
-            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            desc:[%desc]<//></></>+[%effMain] TpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens
             req:[%condMain] tokens:earned
             on tick:
@@ -68,7 +68,7 @@ Includes
     *include buildingBonus %id %name %desc %flavor %priceBonus %condBonus %effMain %effBonus %tag
         *building[%id]
             name:[%name]
-            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            desc:[%desc]<//></></>+[%effMain] TpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceBonus] gems
             req:[%condBonus] gems:earned
             on tick:
@@ -80,7 +80,7 @@ Includes
     *include buildingBoth %id %name %desc %flavor %priceMain %priceBonus %condMain %condBonus %effMain %effBonus %tag
         *building[%id]
             name:[%name]
-            desc:[%desc]<//></></>+[%effMain] CpS</>+[%effBonus] GpS<//></></>[%flavor]
+            desc:[%desc]<//></></>+[%effMain] TpS</>+[%effBonus] GpS<//></></>[%flavor]
             cost:[%priceMain] tokens, [%priceBonus] gems
             req:[%condMain] tokens:earned, [%condBonus] gems:earned
             on tick:
@@ -88,6 +88,19 @@ Includes
                 yield [%effBonus] tag:bonusRes
             end
             tags:building [%tag]
+
+
+    // UPGRADE INCLUDES
+    *include upgradeMain %id %name %desc %flavor %priceMain %condMain %condBuild %condBuNum %effMain %effBonus %tagOne %tagTwo
+        name:[%name]
+        desc:[%desc]<//></></>x[%effMain] Tokens Earned</>x[%effBonus] Gems Earned<//></></>[%flavor]
+        cost:[%priceMain] tokens
+        req:[%condMain] tokens:earned and [%condBuNum] [%condBuild]
+        passive:
+            multiply [%condBuild] yield of tag:mainRes by [%effMain]
+            multiply [%condBuild] yield of tag:bonusRes by [%effBonus]
+        end
+        tags:[%tagOne] [%tagTwo]
 
 //Layout
 
@@ -148,7 +161,7 @@ Buildings
     [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %condMain="5" %effMain="1" %effBonus="0.000000001" %tag="melee"]
 
 Upgrades
-
+    [include upgradeMain %id="UpButtPress1" %name="Latex Gloves" %desc="A cheap pair of gloves." %flavor="Due to the massive amount of complaints, we had to improvise.." %priceMain="5" %condMain="15" %condBuild="personButtPress" %condBuNum="1" %effMain="2" %effBonus="2" %tagOne="personUp" %tagTwo="gloves"]
 
 Achievements
 
