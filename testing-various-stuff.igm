@@ -91,8 +91,8 @@ Includes
 
 
     // UPGRADE INCLUDES
-    *include upgradeMain %id %name %desc %flavor %priceMain %condMain %condBuild %condBuNum %effMain %effBonus %tagOne %tagTwo
-        name:[%name]
+    *include upgradeMain %id %name %material %desc %flavor %priceMain %condMain %condBuild %condBuNum %effMain %effBonus %tagOne %tagTwo
+        name:[%material] [%name]
         desc:[%desc]<//></></>x[%effMain] Tokens Earned</>x[%effBonus] Gems Earned<//></></>[%flavor]
         cost:[%priceMain] tokens
         req:[%condMain] tokens:earned and [%condBuNum] [%condBuild]
@@ -161,7 +161,7 @@ Buildings
     [include personMain %id="ButtPress" %name="Button Presser" %desc="Presses the red button for you." %flavor="FLAVOR TEXT" %priceMain="15" %condMain="5" %effMain="1" %effBonus="0.000000001" %tag="melee"]
 
 Upgrades
-    [include upgradeMain %id="UpButtPress1" %name="Latex Gloves" %desc="A cheap pair of gloves." %flavor="Due to the massive amount of complaints, we had to improvise.." %priceMain="5" %condMain="15" %condBuild="personButtPress" %condBuNum="1" %effMain="2" %effBonus="2" %tagOne="personUp" %tagTwo="gloves"]
+    [include upgradeMain %id="UpButtPress1" %name="Gloves" %material="Latex" %desc="A cheap pair of gloves." %flavor="Due to the massive amount of complaints, we had to improvise.." %priceMain="5" %condMain="15" %condBuild="personButtPress" %condBuNum="1" %effMain="2" %effBonus="2" %tagOne="personUp" %tagTwo="gloves"]
 
 Achievements
 
